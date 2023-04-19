@@ -25,33 +25,39 @@
       background-color: aqua;
     }
   </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
   <!-- Rating state start -->
+  <div class="conatiner">
+    <div class="center">
+      <div id="ratingContainer">
+        <img src="images/icon-star.svg" alt="">
+        <h2>How did we do?</h2>
 
-  <div id="ratingContainer">
-    How did we do?
+        <p>Please let us know how we did with your support request. All feedback is appreciated
+          to help us improve our offering!</p>
+        <form id="ratingForm">
+          <div class="flex">
+            <button class="ratingbtn" value="1">1</button>
+            <button class="ratingbtn" value="2">2</button>
+            <button class="ratingbtn" value="3">3</button>
+            <button class="ratingbtn" value="4">4</button>
+            <button class="ratingbtn" value="5">5</button>
+          </div>
+          <button id="submitBtn" type="submit">Submit</button>
+        </form>
+      </div>
 
-    Please let us know how we did with your support request. All feedback is appreciated
-    to help us improve our offering!
-    <form id="ratingForm">
-      <button class="ratingbtn" value="1">1</button>
-      <button class="ratingbtn" value="2">2</button>
-      <button class="ratingbtn" value="3">3</button>
-      <button class="ratingbtn" value="4">4</button>
-      <button class="ratingbtn" value="5">5</button>
-      <button id="submitBtn" type="submit">Submit</button>
-    </form>
+      <!-- Rating state end -->
+
+      <!-- Thank you state start -->
+      <div id="output" class="hidden"></div>
+      <!-- Thank you state end -->
+    </div>
   </div>
-
-  <!-- Rating state end -->
-
-  <!-- Thank you state start -->
-  <div id="output"></div>
-  <!-- Thank you state end -->
-
 
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
@@ -69,8 +75,13 @@
       if (clickedbtn.id === "submitBtn") {
         const output = document.getElementById("output");
         const input = document.getElementById("ratingContainer");
-        input.innerHTML = "";
-        output.innerHTML = `<h1>You selected ${rating} out of 5</h1><h2> Thank you!</h2><p> We appreciate you taking the time to give a rating. If you ever need more support,don’t hesitate to get in touch!</p>`;
+        input.classList.add('hidden');
+        output.classList.remove('hidden');
+        output.innerHTML = `<img src="/images/illustration-thank-you.svg" alt="">
+        <div>You selected ${rating} out of 5</div>
+        <h2> Thank you!</h2>
+        <p> We appreciate you taking the time to give a rating. If you ever need more support,don’t hesitate to get in
+          touch!</p>`;
       }
       buttons.forEach((btn) => {
         if (btn === clickedbtn) {
